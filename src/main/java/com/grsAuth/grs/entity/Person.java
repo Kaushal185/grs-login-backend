@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 public class Person {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
     private String id;
     @Column(name = "FIRST_NAME")
@@ -21,6 +21,10 @@ public class Person {
     @Column(name = "STATUS")
     private String status;
     @Column(name = "PASSWORD")
-    private String password;
+    public String password;
 
+
+    public Object getPassword() {
+        return this.password;
+    }
 }

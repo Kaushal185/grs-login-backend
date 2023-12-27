@@ -10,4 +10,5 @@ public interface FieldService {
     public List<Field> getAllFields();
 
     public Optional<Field> getFieldById(long id);
+    public Optional<Field> getMessageById(long id);
 }

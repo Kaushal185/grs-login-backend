@@ -1,5 +1,7 @@
 package com.grsAuth.grs.service;
 
+import com.grsAuth.grs.entity.LoginRequest;
+import com.grsAuth.grs.entity.LoginResponse;
 import com.grsAuth.grs.entity.Person;
 
 import java.util.List;
@@ -10,4 +12,5 @@ public interface PersonService {
 
     public Optional<Person> getPersonById(String id);
 
+    public LoginResponse postPersonById(LoginRequest loginRequest);
 }

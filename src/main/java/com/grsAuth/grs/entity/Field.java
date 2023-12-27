@@ -27,4 +27,8 @@ public class Field {
     String updatedOn;
     @Column(name = "MESSAGE")
     String message;
+
+    public String getMessage() {
+        return this.message;
+    }
 }
