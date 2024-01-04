@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -22,9 +24,14 @@ public class Field {
     @Column(name = "STATUS")
     String status;
     @Column(name = "CREATED_ON")
-    String createdOn;
+    Date createdOn;
     @Column(name = "UPDATED_ON")
-    String updatedOn;
+    Date updatedOn;
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Column(name = "MESSAGE")
     String message;
 
