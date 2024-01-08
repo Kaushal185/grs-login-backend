@@ -18,6 +18,6 @@ public interface RelationRepository extends JpaRepository<Relation, Long> {
     List<Relation> customQueryById(@Param("id") Long id);
 
     //Here I am searching only msg2 inside relation table
-    @Query(value = "SELECT * FROM rmwb.msg_relation WHERE MSG1 = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM rmwb.msg_relation WHERE MSG1 = :id or MSG2 = :id", nativeQuery = true)
     List<Relation> customQueryByMessage(@Param("id") Long id);
 }
