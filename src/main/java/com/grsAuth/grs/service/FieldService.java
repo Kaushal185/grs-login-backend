@@ -1,6 +1,7 @@
 package com.grsAuth.grs.service;
 
 import com.grsAuth.grs.entity.Field;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -13,4 +14,7 @@ public interface FieldService {
     public Optional<Field> getMessageById(long id);
     public List<Field> demoMethod();
     List<Field> demoMethod2(Long id);
+
+    Page<Field> getAllByPage(int page, int size);
+    boolean substringOcc(String str,String s);
 }
