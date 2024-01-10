@@ -1,6 +1,7 @@
 package com.grsAuth.grs.controller;
 
 import com.grsAuth.grs.entity.Field;
+import com.grsAuth.grs.entity.Pair;
 import com.grsAuth.grs.entity.Person;
 import com.grsAuth.grs.entity.Relation;
 import com.grsAuth.grs.service.FieldService;
@@ -64,6 +65,7 @@ public class FieldController {
     @GetMapping("/nothing/{id}")
     public List<Field> getTwoFields(@PathVariable Long id){
         boolean plusExist = false;
+        ArrayList<Pair> pairs = new ArrayList<>();
         int indexOfLine = -1;
         int indexOfPlus = -1;
         List<Relation> r = relationService.customQueryByMessage(id);
@@ -87,15 +89,26 @@ public class FieldController {
             if(tt.charAt(i) == '+'){
                 plusExist = true;
                 indexOfPlus = i;
-                break;
+                Pair pair = new Pair();
+                pair.setFirst(indexOfLine);
+                pair.setSecond(indexOfPlus);
+                pairs.add(pair);
             }
         }
         ArrayList<Field> list = new ArrayList<Field>(List.of(f1.get(0),f2.get(0)));
         if(plusExist){
             Field temp = new Field();
-            temp.setMessage(String.valueOf(indexOfLine)+"$"+String.valueOf(indexOfPlus));
+              String str = "";
+              for(int i=0;i<pairs.size();i++){
+                  str += pairs.get(i).getFirst()+"$"+pairs.get(i).getSecond();
+                  if(i < pairs.size()-1){
+                      str += "$";
+                  }
+              }
+              temp.setMessage(str);
             list.add(temp);
         }
         return list;
+
     }
 }
