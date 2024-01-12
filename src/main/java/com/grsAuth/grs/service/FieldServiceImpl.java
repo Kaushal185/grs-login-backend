@@ -35,6 +35,7 @@ public class FieldServiceImpl implements FieldService{
     public List<Field> demoMethod2(Long id) {
         return fieldRepository.demoMethod2(id);
     }
+    @Override
     public Page<Field> getAllByPage(int page, int size) {
         return fieldRepository.findAll(PageRequest.of(page, size));
     }
